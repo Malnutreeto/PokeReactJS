@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root{
+  background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.pokemon-card:hover{
+background: #131211 !important;
+border: 2px solid orange !important; 
+transition: 0.2s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.link-name{
+  text-decoration: none;
   color: white;
+  font-size: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.link-name:hover{
+  cursor: pointer;
+  color: #e3e3e3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.read-more{
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+
+
+.read-card:hover{
+  background: white !important;
+
+  transition: 1s;
+}
+
+.read-more:hover {
+  color: #183373 !important;
+}
+
+
+.normal{
+  background-color: #A8A878;
+}
+.grass{
+  background-color: #78C850;
+}
+.ice{
+  background-color: #98D8D8;
+}
+.fighting{
+  background-color: #C03028;
+}
+.poison{
+  background-color: #A040A0;
+}
+.ground{
+  background-color: #E0C068;
+}
+.flying{
+  background-color: #A890F0;
+}
+.psychic{
+  background-color: #F85888;
+}
+.bug{
+  background-color: #A8B820;
+}
+.rock{
+  background-color: #B8A038;
+}
+.ghost{
+  background-color: #705898;
+}
+.dragon{
+  background-color: #7038F8;
+}
+.dark{
+  background-color: #705848;
+}
+.steel{
+  background-color: #B8B8D0;
+}
+.fairy{
+  background-color: #EE99AC;
+}
+.fire{
+  background-color: #F08030;
+}
+.water{
+  background-color: #6890F0;
+}
+.electric{
+  background-color: #F8D030;
 }
