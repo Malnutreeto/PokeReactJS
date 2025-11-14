@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import axios from 'axios';
 import { Row, Col, Form } from 'react-bootstrap';
 import Pokemon from '../components/Pokemon';
