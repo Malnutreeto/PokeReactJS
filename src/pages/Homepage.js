@@ -40,7 +40,7 @@ const Homepage = () => {
         return filtered;
     }, [pokemon, searchTerm]);
 
-    let sessionCache = null;
+    let sessionCache = useRef(null);
 
     useEffect(() => {
         const loadInitialData = async () => {
@@ -81,7 +81,7 @@ const Homepage = () => {
                 setPokemon([...allData]);
             }
 
-            sessionCache = allData;
+            sessionCache.current = allData;
         };
 
         loadInitialData();
