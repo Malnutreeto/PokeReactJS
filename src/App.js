@@ -7,7 +7,7 @@ import Header from './components/Header';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/pokereact">
       <Header />
       <Container>
         <Routes>
