@@ -25,9 +25,9 @@ const Homepage = () => {
 
     const filteredPokemon = useMemo(() => {
         if (!searchTerm) return pokemon;
-        
+
         console.log('Filtering with term:', searchTerm);
-        
+
         const filtered = pokemon.filter(p => {
             const pokemonData = p.data || p;
             return (
@@ -35,7 +35,7 @@ const Homepage = () => {
                 pokemonData.id.toString().includes(searchTerm)
             );
         });
-        
+
         console.log('Filtered results:', filtered.length);
         return filtered;
     }, [pokemon, searchTerm]);
@@ -46,8 +46,9 @@ const Homepage = () => {
         const loadInitialData = async () => {
             setLoading(true);
 
-            if (sessionCache) {
-                setPokemon(sessionCache.slice(0, 50));
+            if (sessionCache.current && Array.isArray(sessionCache.current)) {
+                console.log('Using cached data:', sessionCache.current.length);
+                setPokemon(sessionCache.current);
                 setLoading(false);
                 return;
             }
@@ -65,23 +66,27 @@ const Homepage = () => {
 
         const loadRemainingPokemon = async (existingData = []) => {
             let allData = [...existingData];
-            const batchSize = 100;
+            const batchSize = 50;
 
-            for (let i = existingData.length + 1; i <= 1025; i += batchSize) {
-                const batchPromises = [];
-                const end = Math.min(i + batchSize - 1, 1025);
+            try {
+                for (let i = existingData.length + 1; i <= 1025; i += batchSize) {
+                    const batchPromises = [];
+                    const end = Math.min(i + batchSize - 1, 1025);
 
-                for (let j = i; j <= end; j++) {
-                    batchPromises.push(getPokemonData(j));
+                    for (let j = i; j <= end; j++) {
+                        batchPromises.push(getPokemonData(j));
+                    }
+
+                    const batchResults = await Promise.all(batchPromises);
+                    allData = [...allData, ...batchResults];
+
+                    setPokemon([...allData]);
                 }
 
-                const batchResults = await Promise.all(batchPromises);
-                allData = [...allData, ...batchResults];
-
-                setPokemon([...allData]);
+                sessionCache.current = allData;
+            } catch (error) {
+                console.error('Error loading remaining Pokémon:', error);
             }
-
-            sessionCache.current = allData;
         };
 
         loadInitialData();
@@ -89,7 +94,7 @@ const Homepage = () => {
 
     return (
         <>
-               {/* Search Bar */}
+            {/* Search Bar */}
             <div className="search-container mb-4">
                 <Form.Group controlId="searchPokemon">
                     <Form.Control
@@ -100,7 +105,7 @@ const Homepage = () => {
                         className="search-input"
                     />
                 </Form.Group>
-                
+
                 <div className="search-info mt-2">
                     {searchTerm ? (
                         <small className="text-muted">
@@ -123,11 +128,11 @@ const Homepage = () => {
                         const pokemonData = p.data || p;
                         return (
                             <Col key={pokemonData.name} xs={10} sm={6} md={4} lg={4} xl={2}>
-                                <Pokemon pokemon={pokemonData}/>
+                                <Pokemon pokemon={pokemonData} />
                             </Col>
                         );
                     })}
-                    
+
                     {searchTerm && filteredPokemon.length === 0 && (
                         <Col xs={12} className="text-center mt-5">
                             <div className="no-results">
