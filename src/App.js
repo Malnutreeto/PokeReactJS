@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import PokemonPage from './components/PokemonPage';
 import Header from './components/Header';
 
+//let's go
 const App = () => {
   return (
     <Router basename="/PokeReactJS">
