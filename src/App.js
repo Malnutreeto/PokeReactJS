@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Homepage from './pages/Homepage';
 import PokemonPage from './components/PokemonPage';
@@ -8,7 +8,7 @@ import Header from './components/Header';
 //let's go
 const App = () => {
   return (
-    <Router basename="/PokeReactJS">
+    <Router>
       <Header />
       <Container>
         <Routes>
