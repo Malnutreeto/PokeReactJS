@@ -2,8 +2,38 @@
 
 A modern React application that displays all 1025 Pokémon with real-time search functionality.
 
-## 🌐 Live Demo
-**[View Live Application](https://malnutreeto.github.io/PokeReactJS/)**
+## 💻 Getting Started (Local Setup)
+
+Follow these steps to get the PokéReactJS application up and running on your local machine.
+
+### Prerequisites
+
+* **Node.js**: Ensure you have a recent version of Node.js installed.
+* **npm** or **yarn**: A package manager for installing dependencies.
+
+### Installation and Run
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/malnutreeto/PokeReactJS.git](https://github.com/malnutreeto/PokeReactJS.git)
+    cd PokeReactJS
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install 
+    # OR
+    yarn install
+    ```
+
+3.  **Start the development server:**
+    ```bash
+    npm start
+    # OR
+    yarn start
+    ```
+
+The application should now be running in your browser, typically at `http://localhost:3000`.
 
 ## Features
 
@@ -58,5 +88,3 @@ A modern React application that displays all 1025 Pokémon with real-time search
 - **GitHub Pages**: Automated deployment via GitHub Actions
 - **Production Build**: Optimized React production build with minification
 - **Asset Optimization**: Efficient handling of static assets and dependencies
-
-
