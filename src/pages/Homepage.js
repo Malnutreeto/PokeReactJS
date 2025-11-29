@@ -13,7 +13,8 @@ const Homepage = () => {
 
 
     const getPokemonData = async (id) => {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const baseUrl = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+        const res = await axios.get(`${baseUrl}/api/pokemon/${id}`);
         return res;
     }
 
